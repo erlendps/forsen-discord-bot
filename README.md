@@ -11,8 +11,8 @@ DISCORD_TOKEN, CLIENT_ID and CLIENT_SECRET, which you can find in the developer 
 and twitch. Call this file .env and place it in the same folder as the python files. You want this
 syntax inside the .env file (without curly brackets):
 
-DISCORD_TOKEN={your discord token}
-CLIENT_ID={your twitch app id}
+DISCORD_TOKEN={your discord token}\
+CLIENT_ID={your twitch app id}\
 CLIENT_SECRET={your twitch app secret}
 
 In your terminal run:
