@@ -5,6 +5,7 @@ import twitch
 import os
 import random
 import time
+from mutagen.mp3 import MP3
 
 import discord
 from dotenv import load_dotenv
@@ -37,9 +38,6 @@ async def dc(ctx):
 async def is_streamer_live(ctx, *args):
     a = 0
     is_live = twitch.is_live("forsen")
-    guild = ctx.guild
-    vc: discord.VoiceClient = discord.utils.get(bot.voice_clients, guild=ctx.guild)
-
 
     try:
         channel = ctx.author.voice.channel
@@ -49,23 +47,28 @@ async def is_streamer_live(ctx, *args):
     except Exception as e:
         print(e)
         await ctx.send("you are not in a voice channel retard")
-    
 
     if is_live:
         if a == 0:
             await ctx.send("forsen is live pogchamp")
         else:
             audio = random.choice(live)
+            audio_length = MP3("voice_feedback/" + audio).info.length
             audio_source = discord.FFmpegPCMAudio("voice_feedback/" + audio)
             voice_client.play(audio_source)
+            time.sleep(audio_length + 1)
+            await voice_client.disconnect()
             
     else:
         if a == 0:
             await ctx.send("forsen is not live, fucking unlucky")
         else:
             audio = random.choice(not_live)
+            audio_length = MP3("voice_feedback/" + audio).info.length
             audio_source = discord.FFmpegPCMAudio("voice_feedback/" + audio)
             voice_client.play(audio_source)
+            time.sleep(audio_length)
+            await voice_client.disconnect()
 
 
 @bot.command(name="forsenquote")
