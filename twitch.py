@@ -39,13 +39,3 @@ def is_live(user): # returns true of online
     except Exception as e:
         print("Error checking user")
         return False
-
-
-print(is_live("caedrel"))
-print(is_live("forsen"))
-
-
-
-
-
-
