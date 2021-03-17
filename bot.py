@@ -12,9 +12,6 @@ from dotenv import load_dotenv
 from discord.ext import commands
 from discord.voice_client import VoiceClient
 
-import youtube_dl
-
-players = {}
 
 live = ["live1.mp3", "live2.mp3", "live3.mp3", "live4.mp3", "live5.mp3", "live6.mp3", "forsenbajs.mp3"]
 not_live = ["not_live1.mp3", "not_live2.mp3", "not_live3.mp3", "not_live4.mp3"]
